@@ -1,0 +1,197 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aa="clr-namespace:ACMESystem1_Activities.ACMESystem1_Activities;assembly=ACMESystem1.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="io_TransactionItem" Type="InOutArgument(sd:DataRow)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>594,3073</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>ACMESystem1_Activities.ACMESystem1_Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>SHA1Online_Activities.SHA1Online_Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>ACMESystem1.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>SHA1Online.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="604,2908" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="VendorTaxID" />
+      <Variable x:TypeArguments="scg:List(si:FileInfo)" Name="MonthlyReportFiles" />
+      <Variable x:TypeArguments="si:FileInfo" Name="ReportFile" />
+      <Variable x:TypeArguments="sd:DataTable" Name="YearlyReportDT" />
+      <Variable x:TypeArguments="x:String" Name="YearlyReportFilePath" />
+      <Variable x:TypeArguments="x:String" Name="ConfirmationID" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <aa:NavToWorkItemDetails sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="NavToWorkItemDetails_1" in_WorkItemID="[io_TransactionItem(&quot;WIID&quot;).ToString()]" />
+    <aa:ExtractVendorInfoDetails out_Address="{x:Null}" out_City="{x:Null}" out_Name="{x:Null}" sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="ExtractVendorInfoDetails_1" out_TaxID="[VendorTaxID]" />
+    <Assign DisplayName="Initialize File List" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(si:FileInfo)">[MonthlyReportFiles]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(si:FileInfo)">[New List(Of FileInfo)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <aa:NavToDownloadMonthlyReport sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="NavToDownloadMonthlyReport_1" />
+    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each Month" sap:VirtualizedContainerService.HintSize="562,741" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(1, 12)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Int32">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="month" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Download" sap:VirtualizedContainerService.HintSize="526,607" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <aa:DownloadMonthlyReport sap:VirtualizedContainerService.HintSize="484,238" sap2010:WorkflowViewState.IdRef="DownloadMonthlyReport_2" in_MonitoredDownloadFolder="[CStr(in_Config(&quot;MonitoredDownloadFolderPath&quot;))]" in_Month="[month]" in_VendorTaxID="[VendorTaxID]" in_Year="[CInt(in_Config(&quot;ReportYear&quot;))]" out_DownloadedFile="[ReportFile]" />
+            <If Condition="[ReportFile IsNot Nothing]" DisplayName="If report was downloaded" sap:VirtualizedContainerService.HintSize="484,237" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <AddToCollection x:TypeArguments="si:FileInfo" Collection="[MonthlyReportFiles]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[ReportFile]" />
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Assign DisplayName="Init YearlyReportDT" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[YearlyReportDT]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="si:FileInfo" CurrentIndex="{x:Null}" DisplayName="For Each File" sap:VirtualizedContainerService.HintSize="562,440" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[MonthlyReportFiles]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="si:FileInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="si:FileInfo" Name="file" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Combine" sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="TempDT" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[TempDT]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[file.FullName]" sap:VirtualizedContainerService.HintSize="334,152" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+            <ui:MergeDataTable Destination="[YearlyReportDT]" DisplayName="Merge into YearlyReportDT" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[TempDT]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <Assign DisplayName="Set YearlyReportFilePath" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[YearlyReportFilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.GetFullPath(Path.Combine("Data", "Output", String.Format("Yearly-Report-{0}-{1}.xlsx", in_Config("ReportYear"), VendorTaxID)))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:WriteRange AddHeaders="True" DataTable="[YearlyReportDT]" DisplayName="Write Report to File" sap:VirtualizedContainerService.HintSize="562,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[YearlyReportFilePath]" />
+    <aa:NavToUploadYearlyReport sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="NavToUploadYearlyReport_1" />
+    <aa:UploadYearlyReport sap:VirtualizedContainerService.HintSize="562,185" sap2010:WorkflowViewState.IdRef="UploadYearlyReport_2" in_FilePath="[YearlyReportFilePath]" in_VendorTaxID="[VendorTaxID]" in_Year="[CInt(in_Config(&quot;ReportYear&quot;))]" out_ConfirmationID="[ConfirmationID]" />
+    <aa:NavToUpdateWorkItem sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="NavToUpdateWorkItem_1" in_WorkItemID="[io_TransactionItem(&quot;WIID&quot;).ToString()]" />
+    <aa:UpdateWorkItem sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="UpdateWorkItem_1" in_Comments="[String.Format(&quot;Uploaded with ID {0}&quot;, ConfirmationID)]" in_Status="Completed" />
+    <ui:ForEach x:TypeArguments="si:FileInfo" CurrentIndex="{x:Null}" DisplayName="For Each File" sap:VirtualizedContainerService.HintSize="562,213" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[MonthlyReportFiles]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="si:FileInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="si:FileInfo" Name="file" />
+          </ActivityAction.Argument>
+          <ui:Delete ContinueOnError="True" DisplayName="Delete report files" sap:VirtualizedContainerService.HintSize="284,79" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[file.FullName]" />
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:Delete ContinueOnError="True" DisplayName="Delete Yearly Report file" sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[YearlyReportFilePath]" />
+  </Sequence>
+</Activity>
